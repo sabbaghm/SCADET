@@ -1,2 +1,2 @@
 # SCADET
-Software artifacts for SCADET: SCADET: A Side-Channel Attack Detection Tool for Tracking Prime+Probe
+Software artifacts for **SCADET: A Side-Channel Attack Detection Tool for Tracking Prime+Probe**
