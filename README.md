@@ -9,9 +9,9 @@
 All of our trace acquisitions are performed when regular background and foreground processes such as OS scheduling and user applications (browsers, editors, network applications etc.), were running at the same time. This added real noise to our traces.<br /> 
 Note: we expect our instrumentation tool to be functional accross various x86 64-bit system configurations.
 ## Pintool instrumentation
-We used *Intel pin* version *3.4-97438-gf90d1f746-gcc-linux*. 
-For i-cache instrumentation please use the [itrace.cpp](https://github.com/sabbaghm/SCADET/blob/master/src/instrumentation/itrace.cpp).<br /> 
-For d-cache instrumentation please use the [dtrace.cpp](https://github.com/sabbaghm/SCADET/blob/master/src/instrumentation/dtrace.cpp).<br /> 
+We used *Intel pin* version *3.4-97438-gf90d1f746-gcc-linux*.<br /> 
+For i-cache instrumentation use the [itrace.cpp](https://github.com/sabbaghm/SCADET/blob/master/src/instrumentation/itrace.cpp).<br /> 
+For d-cache instrumentation use the [dtrace.cpp](https://github.com/sabbaghm/SCADET/blob/master/src/instrumentation/dtrace.cpp).<br /> 
 
 For building and running the pintool for d-cache analysis, do:
 ```shell
