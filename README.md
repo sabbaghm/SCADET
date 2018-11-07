@@ -1,6 +1,6 @@
 # SCADET block diagram
 ![SCADET block diagram](https://github.com/sabbaghm/SCADET/blob/master/figures/SCADET_BD.png)
-# Binary Instrumentaion and trace acquisition
+# Binary instrumentaion and trace acquisition
 ## Setup
 * **OS:** Ubuntu 16.04.1 operating system (Linux kernel version of 4.13.0-38-generic)
 * **CPU:** Intel Skylake core-i7 6700 CPU
@@ -26,7 +26,7 @@ For example:
 
 Similarly you can launch the instrumentation and trace acquistions for i-cache analysis by building *itrace.so*.
 
-# Analysis
+# Address analysis and pattern detection
 After capturing the traces, copy them to the computing server/cluster.
 ## Setup
 * **Spark configuration:** 
