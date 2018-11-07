@@ -6,12 +6,12 @@
 * **CPU:** Intel Skylake core-i7 6700 CPU
 * **Main memory:** 16GB RAM
 * **Caches:** 16-way 8MB L3 cache, 8-way 32KB L1 I-cache, and 8-way 32KB D-cache
-All of our trace acquisitions are performed when regular background and foreground processes such as OS scheduling and user applications (browsers, editors, network applications etc.), were running at the same time. This added real noise to our traces.
+All of our trace acquisitions are performed when regular background and foreground processes such as OS scheduling and user applications (browsers, editors, network applications etc.), were running at the same time. This added real noise to our traces.<br /> 
 Note: we expect our instrumentation tool to be functional accross various x86 64-bit system configurations.
 ## Pintool instrumentation
 We used *Intel pin* version *3.4-97438-gf90d1f746-gcc-linux*. 
-For i-cache instrumentation please use the [itrace.cpp](https://github.com/sabbaghm/SCADET/blob/master/src/instrumentation/itrace.cpp).
-For d-cache instrumentation please use the [dtrace.cpp](https://github.com/sabbaghm/SCADET/blob/master/src/instrumentation/dtrace.cpp).
+For i-cache instrumentation please use the [itrace.cpp](https://github.com/sabbaghm/SCADET/blob/master/src/instrumentation/itrace.cpp).<br /> 
+For d-cache instrumentation please use the [dtrace.cpp](https://github.com/sabbaghm/SCADET/blob/master/src/instrumentation/dtrace.cpp).<br /> 
 
 For building and running the pintool for d-cache analysis, do:
 ```shell
@@ -30,8 +30,8 @@ Similarly you can launch the instrumentation and trace acquistions for i-cache a
 After capturing the traces, copy them to the computing server/cluster.
 ## Setup
 * **Spark configuration:** 
-Apache Spark platform version 1.4.1 or 2.3.2 (Hadoop 2.4 or 2.7) and python 2.7.15.
-1 master node with 5 worker nodes. 50GB driver memory, 50GB executor memory, 20GB maximum result size.
+Apache Spark platform version 1.4.1 or 2.3.2 (Hadoop 2.4 or 2.7) and python 2.7.15.<br /> 
+1 master node with 5 worker nodes. 50GB driver memory, 50GB executor memory, and 20GB maximum result size.
 * **CPU:** Intel Xeon CPU E5-2690 v3 2.6GHz, 48 logical cores
 * **Main memory:** 128GB RAM
 ## Pyspark analysis
