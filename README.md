@@ -1,6 +1,6 @@
 # Introduction
 
-This repository contains the software artifacts for ![SCADET: A Side-Channel Attack Detection Tool for Tracking Prime+Probe](http://delivery.acm.org/10.1145/3250000/3240844/a107-sabbagh.pdf?ip=155.33.134.9&id=3240844&acc=OPEN&key=AA86BE8B6928DDC7%2EC2B8A117C7A71F5A%2E4D4702B0C3E38B35%2E6D218144511F3437&__acm__=1543593400_bbb97bab0d4e725d02770bf32a2fe6d6). Please read the article for a detailed description of the SCADET methodology and the tool components.
+This repository contains the software artifacts for [SCADET: A Side-Channel Attack Detection Tool for Tracking Prime+Probe](http://delivery.acm.org/10.1145/3250000/3240844/a107-sabbagh.pdf?ip=155.33.134.9&id=3240844&acc=OPEN&key=AA86BE8B6928DDC7%2EC2B8A117C7A71F5A%2E4D4702B0C3E38B35%2E6D218144511F3437&__acm__=1543593400_bbb97bab0d4e725d02770bf32a2fe6d6). Please read the article for a detailed description of the SCADET methodology and the tool components.
 
 # SCADET block diagram
 ![SCADET block diagram](https://github.com/sabbaghm/SCADET/blob/master/figures/SCADET_BD.png)
