@@ -76,6 +76,9 @@ NUM_CORE = 4# Number of "physical" cores
 WR = 0
 RD = 1
 
+## Minimum number of Prime+Probe couples to detect
+NUM_PP = 1
+
 ## L1-info -- modify it based on your system
 L1_CACHE_SIZE = 32*KB
 L1_CACHE_LINE_SIZE = 64
@@ -169,7 +172,7 @@ def cluster_gen(uc_data_dict):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description = 'Parallel address analysis tool',formatter_class=argparse.ArgumentDefaultsHelpFormatter)    
     parser.add_argument('--mode', help='Mode of operation', choices=['BOTH', 'READ', 'WRITE']) 
-    parser.add_argument('scope', help='Target scope (cache level and instruction/data)', choices=['L1', 'L1I', 'L1D', 'LLC'])
+    parser.add_argument('scope', help='Target scope (cache level and instruction/data)', choices=['L1I', 'L1D', 'LLC'])
     parser.add_argument('input', help='Input file or list of files.')
     parser.add_argument('--verbose', help='Generate a verbose report.')
     
@@ -179,7 +182,6 @@ if __name__ == "__main__":
 
     mode = args.mode;
     scope = args.scope;
-    code = args.code;
     
     result_file = open(args.input + "_result.txt", 'a')    
 
@@ -237,7 +239,7 @@ if __name__ == "__main__":
             # Create [(number of unique address lines in group0, average access time in group0), ...], filter by temporal locality in the line access times and number of the unique addresses
             cnts_intrasetTimes_rdd = set_grouped_rdd_read.filter(lambda (x, y): len(set(elem[1] for elem in y))>=FILTER_THRESHOLD) \
             .mapValues(lambda values: cluster_gen({'times': list(elem[0] for elem in values), 'addrs': list(elem[1] for elem in values), \
-            'params': CACHE_PARAMS})).filter(lambda (x, y): len(y)>1) #Threshold is architecture dependent, 5820000
+            'params': CACHE_PARAMS})).filter(lambda (x, y): len(y)>NUM_PP) #Threshold is architecture dependent, 5820000
 
             cnts_times = cnts_intrasetTimes_rdd.collect()
             result_table = 'Data cache read mode detected set idx | (#lines, cluster_center)' \
@@ -265,7 +267,7 @@ if __name__ == "__main__":
             # Create [(number of unique address lines in group0, average access time in group0), ...], filter by temporal locality in the line access times and number of the unique addresses
             cnts_intrasetTimes_rdd = set_grouped_rdd_write.filter(lambda (x, y): len(set(elem[1] for elem in y))>=FILTER_THRESHOLD) \
             .mapValues(lambda values: cluster_gen({'times': list(elem[0] for elem in values), 'addrs': list(elem[1] for elem in values), \
-            'params': CACHE_PARAMS})).filter(lambda (x, y): len(y)>1)
+            'params': CACHE_PARAMS})).filter(lambda (x, y): len(y)>NUM_PP)
                 
             cnts_times = cnts_intrasetTimes_rdd.collect()
             result_table = 'Data cache write mode detected set idx | (#lines, cluster_center)' \
@@ -290,7 +292,7 @@ if __name__ == "__main__":
         # Create [(number of unique address lines in group0, average access time in group0), ...], filter by temporal locality in the line access times and number of the unique addresses
         cnts_intrasetTimes_rdd = set_grouped_rdd_I.filter(lambda (x, y): len(set(elem[1] for elem in y))>=FILTER_THRESHOLD) \
         .mapValues(lambda values: (cluster_gen({'times': list(elem[0] for elem in values), 'addrs': list(elem[1] for elem in values), \
-        'params': CACHE_PARAMS}))).filter(lambda (x, y): len(y[0])>1) #Threshold is architecture dependent, 5820000
+        'params': CACHE_PARAMS}))).filter(lambda (x, y): len(y[0])>NUM_PP) #Threshold is architecture dependent, 5820000
            
         cnts_times = cnts_intrasetTimes_rdd.collect()
         result_table = 'L1I detected set idx | (#lines, cluster_center)' \
