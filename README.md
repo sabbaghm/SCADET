@@ -27,6 +27,7 @@ cd ../../../
 For example:
 ./pin -t source/tools/ManualExamples/obj-intel64/dtrace.so -o traces/l1d.bin -- mastik/demo/L1-capture 100
 ```
+**Note**: *you may need sudo access for converting virtual addresses to physical addresses through page maps.*
 
 Similarly you can launch the instrumentation and trace acquistions for i-cache analysis by building *itrace.so*.
 
